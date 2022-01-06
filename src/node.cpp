@@ -1,26 +1,22 @@
 
 #include "node.h"
 
-template <typename T>
-Node<T>::Node(unsigned int id) : m_id(id),
-                                 m_data(nullptr)
+Node::Node(unsigned int id) : m_id(id),
+                              m_data(0)
 {
 }
 
-template <typename T>
-unsigned int Node<T>::getId()
+unsigned int Node::getId()
 {
     return m_id;
 }
 
-template <typename T>
-T Node<T>::getData()
+int Node::getData()
 {
     return m_data;
 }
 
-template <typename T>
-void Node<T>::setData(T data)
+void Node::setData(int data)
 {
     m_data = data;
 }

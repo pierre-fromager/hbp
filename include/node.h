@@ -4,19 +4,18 @@
 
 #include <string>
 
-template <typename T>
 class Node
 {
 
 public:
     Node(unsigned int id);
     unsigned int getId();
-    T getData();
-    void setData(T data);
+    int getData();
+    void setData(int data);
 
 protected:
     unsigned int m_id;
-    T m_data;
+    int m_data;
 };
 
 //#include "../src/node.cpp"

@@ -5,17 +5,16 @@
 #include <string>
 #include "node.h"
 
-template <typename T>
-class DLinkedNode : public Node<T>
+class DLinkedNode : public Node
 {
 
 public:
-    DLinkedNode<T>(unsigned int id);
+    DLinkedNode(unsigned int id);
     friend unsigned int getId();
-    DLinkedNode <T>*getPrev();
-    DLinkedNode <T>*getNext();
-    void setPrev<T>(DLinkedNode *node);
-    void setNext<T>(DLinkedNode *node);
+    DLinkedNode *getPrev();
+    DLinkedNode *getNext();
+    void setPrev(DLinkedNode *node);
+    void setNext(DLinkedNode *node);
 
 protected:
     unsigned int m_id;
