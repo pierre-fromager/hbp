@@ -1,8 +1,8 @@
 #include "dlinkednode.h"
 
-DLinkedNode::DLinkedNode(unsigned int id) : Node(id),                              
-                              m_prev(nullptr),
-                              m_next(nullptr)
+DLinkedNode::DLinkedNode(unsigned int id) : DataNode(id),
+                                            m_prev(nullptr),
+                                            m_next(nullptr)
 {
 }
 

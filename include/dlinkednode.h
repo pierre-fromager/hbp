@@ -3,9 +3,9 @@
 #define H_DLINKEDNODE
 
 #include <string>
-#include "node.h"
+#include "datanode.h"
 
-class DLinkedNode : public Node
+class DLinkedNode : public DataNode
 {
 
 public:

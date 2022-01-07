@@ -18,6 +18,4 @@ protected:
     int m_data;
 };
 
-//#include "../src/node.cpp"
-
 #endif
