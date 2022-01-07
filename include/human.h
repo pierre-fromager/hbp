@@ -5,7 +5,6 @@
 #include <iostream>
 #include <vector>
 #include <algorithm>
-//#include "node.h"
 #include "dlinkednode.h"
 
 namespace Human

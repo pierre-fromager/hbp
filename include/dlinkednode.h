@@ -10,7 +10,6 @@ class DLinkedNode : public DataNode
 
 public:
     DLinkedNode(unsigned int id);
-    friend unsigned int getId();
     DLinkedNode *getPrev();
     DLinkedNode *getNext();
     void setPrev(DLinkedNode *node);
