@@ -16,9 +16,6 @@ public:
     void setPrev(DLinkedNode *node);
     void setNext(DLinkedNode *node);
 
-protected:
-    unsigned int m_id;
-
 private:
     DLinkedNode *m_prev;
     DLinkedNode *m_next;
