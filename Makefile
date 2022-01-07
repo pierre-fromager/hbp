@@ -19,7 +19,7 @@ LDLIBS		= -lm
 DOC			= doc
 SRC			= src
 CPPW		= *.cpp
-TARGET     	= test
+TARGET     	= hbp
 SRC_FILES 	= $(wildcard $(SRC)/$(CPPW)) $(wildcard$(SRC)/**/$(CPPW))
 OBJECTS 	= $(SRC_FILES:%.cpp=%.o)
 

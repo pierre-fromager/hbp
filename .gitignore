@@ -1,6 +1,6 @@
 *.o
 doc/html
-wxtest
+hbp
 doc/html
 callgrind.*
 .~lock.*
