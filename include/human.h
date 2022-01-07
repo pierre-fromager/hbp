@@ -5,7 +5,7 @@
 #include <iostream>
 #include <vector>
 #include <algorithm>
-//#include "node.h"
+//#include "datanode.h"
 #include "dlinkednode.h"
 
 namespace Human
@@ -38,9 +38,9 @@ class Body
 public:
     Body();
     ~Body();
-    DLinkedNode *limb(unsigned int id);
+    DLinkedNode<int> *limb(unsigned int id);
     void pulse();
-    std::vector<DLinkedNode *> backReferences(unsigned int id);
+    std::vector<DLinkedNode<int> *> backReferences(unsigned int id);
     void propBackward(unsigned int id);
     void propForward(unsigned int id);
 
@@ -48,7 +48,7 @@ private:
     void build();
     void connect();
     void addLimb(unsigned int id);
-    std::vector<DLinkedNode *> m_limbs;
+    std::vector<DLinkedNode<int> *> m_limbs;
 };
 
 } // namespace Human

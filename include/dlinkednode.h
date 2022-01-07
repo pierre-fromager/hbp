@@ -3,9 +3,11 @@
 #define H_DLINKEDNODE
 
 #include <string>
-#include "node.h"
+#include "datanode.h"
+//#include "node.h"
 
-class DLinkedNode : public Node
+template <typename Item>
+class DLinkedNode : public virtual DataNode<Item>
 {
 
 public:

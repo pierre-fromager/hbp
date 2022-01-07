@@ -4,7 +4,7 @@
 Human::Body::Body()
 {
     build();
-    connect();
+    //connect();
 }
 
 Human::Body::~Body()
@@ -12,14 +12,14 @@ Human::Body::~Body()
     m_limbs.clear();
 }
 
-DLinkedNode *Human::Body::limb(unsigned int id)
+DLinkedNode<int> *Human::Body::limb(unsigned int id)
 {
-    std::vector<DLinkedNode *> f_limbs;
+    std::vector<DLinkedNode<int> *> f_limbs;
     std::copy_if(
         std::begin(m_limbs),
         std::end(m_limbs),
         std::back_inserter(f_limbs),
-        [id](DLinkedNode *node) {
+        [id](DLinkedNode<int> *node) {
             return node->getId() == id;
         });
     return f_limbs.front();
@@ -27,7 +27,8 @@ DLinkedNode *Human::Body::limb(unsigned int id)
 
 void Human::Body::addLimb(unsigned int id)
 {
-    m_limbs.push_back(new DLinkedNode(id));
+    DLinkedNode<int> *pp = new DLinkedNode<int>(id);
+    m_limbs.push_back(pp);
 }
 
 void Human::Body::build()
@@ -50,6 +51,7 @@ void Human::Body::build()
 
 void Human::Body::connect()
 {
+    
     limb(Human::Limbs::Id::HEAD)->setPrev(limb(Human::Limbs::Id::TRUNC));
     limb(Human::Limbs::Id::ARM_L_UP)->setPrev(limb(Human::Limbs::Id::TRUNC));
     limb(Human::Limbs::Id::ARM_R_UP)->setPrev(limb(Human::Limbs::Id::TRUNC));
@@ -75,22 +77,22 @@ void Human::Body::connect()
 
 void Human::Body::pulse()
 {
-    std::vector<DLinkedNode *> refs = backReferences(Human::Limbs::Id::TRUNC);
+    std::vector<DLinkedNode<int> *> refs = backReferences(Human::Limbs::Id::TRUNC);
     size_t refscnt;
     const size_t nbelt = refs.size();
     for (refscnt = 0; refscnt < nbelt; refscnt++)
         propForward(refs[refscnt]->getId());
 }
 
-std::vector<DLinkedNode *> Human::Body::backReferences(unsigned int id)
+std::vector<DLinkedNode<int> *> Human::Body::backReferences(unsigned int id)
 {
-    DLinkedNode *current = limb(id);
-    std::vector<DLinkedNode *> back_references;
+    DLinkedNode<int> *current = limb(id);
+    std::vector<DLinkedNode<int> *> back_references;
     std::copy_if(
         std::begin(m_limbs),
         std::end(m_limbs),
         std::back_inserter(back_references),
-        [current](DLinkedNode *node) {
+        [current](DLinkedNode<int> *node) {
             return node->getPrev() == current;
         });
     return back_references;
@@ -98,7 +100,7 @@ std::vector<DLinkedNode *> Human::Body::backReferences(unsigned int id)
 
 void Human::Body::propBackward(unsigned int id)
 {
-    DLinkedNode *cur = limb(id);
+    DLinkedNode<int> *cur = limb(id);
     std::cout << "backward" << std::endl;
     while (cur != nullptr)
     {
@@ -109,7 +111,7 @@ void Human::Body::propBackward(unsigned int id)
 
 void Human::Body::propForward(unsigned int id)
 {
-    DLinkedNode *cur = limb(id);
+    DLinkedNode<int> *cur = limb(id);
     std::cout << "forward" << std::endl;
     while (cur != nullptr)
     {

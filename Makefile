@@ -1,5 +1,5 @@
 CXX			= g++
-CXXFLAGS	= -O2 -Werror -Wall -Wextra -Wpedantic -std=c++17 \
+CXXFLAGS	= -Werror -Wall -Wextra -Wpedantic -std=c++17 \
 	-I./include \
 	-Wno-unused-function -Wno-unused-parameter -Wno-unused-variable \
 	-Wno-format-nonliteral -Wcast-qual -Wconversion \

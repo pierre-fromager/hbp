@@ -1,27 +1,32 @@
 #include "dlinkednode.h"
 
-DLinkedNode::DLinkedNode(unsigned int id) : Node(id),                              
+template <typename Item>
+DLinkedNode<Item>::DLinkedNode(unsigned int id) : DataNode<Item>(id)/*,                              
                               m_prev(nullptr),
-                              m_next(nullptr)
+                              m_next(nullptr)*/
 {
 }
 
-DLinkedNode *DLinkedNode::getPrev()
+template <typename Item>
+DLinkedNode<Item> *DLinkedNode<Item>::getPrev()
 {
     return m_prev;
 }
 
-DLinkedNode *DLinkedNode::getNext()
+template <typename Item>
+DLinkedNode<Item> *DLinkedNode<Item>::getNext()
 {
     return m_next;
 }
 
-void DLinkedNode::setPrev(DLinkedNode *node)
+template <typename Item>
+void DLinkedNode<Item>::setPrev(DLinkedNode *node)
 {
     m_prev = node;
 }
 
-void DLinkedNode::setNext(DLinkedNode *node)
+template <typename Item>
+void DLinkedNode<Item>::setNext(DLinkedNode *node)
 {
     m_next = node;
 }
