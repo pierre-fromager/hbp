@@ -16,6 +16,8 @@ Human::Ratios::~Ratios()
 void Human::Ratios::setGender(unsigned int gender)
 {
     m_gender = gender;
+    reset();
+    build();
 }
 
 void Human::Ratios::setSize(long double size)

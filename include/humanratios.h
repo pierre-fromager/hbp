@@ -9,6 +9,11 @@
 namespace Human
 {
 
+/**
+ * @brief Human limbs weight & size calculator
+ * @url http://villemin.gerard.free.fr/Biologie/CorpsPro.htm
+ * 
+ */
 class Ratios
 {
 

@@ -42,15 +42,30 @@ void makeMePulse()
 
 void checkHumanRatios()
 {
-    Human::Ratios *hr = new Human::Ratios(Human::Genders::Id::MALE, 185, 120);
-    std::cout << "Weight\n"
+    std::cout << "-- Male 180/80 --\n"
               << std::endl;
-    std::cout << "\tHead : " << hr->getWeight(Human::Limbs::Id::HEAD) << std::endl;
-    std::cout << "\tTrunc : " << hr->getWeight(Human::Limbs::Id::TRUNC) << std::endl;
-    std::cout << "Size\n"
+    Human::Ratios *hr = new Human::Ratios(Human::Genders::Id::MALE, 180, 80);
+    std::cout << "\t* Weight\n"
               << std::endl;
-    std::cout << "\tHead : " << hr->getSize(Human::Limbs::Id::HEAD) << std::endl;
-    std::cout << "\tTrunc : " << hr->getSize(Human::Limbs::Id::TRUNC) << std::endl;
+    std::cout << "\t\t- Head\t: " << hr->getWeight(Human::Limbs::Id::HEAD) << std::endl;
+    std::cout << "\t\t- Trunc\t: " << hr->getWeight(Human::Limbs::Id::TRUNC) << std::endl;
+    std::cout << "\t* Size\n"
+              << std::endl;
+    std::cout << "\t\t- Head\t: " << hr->getSize(Human::Limbs::Id::HEAD) << std::endl;
+    std::cout << "\t\t- Trunc\t: " << hr->getSize(Human::Limbs::Id::TRUNC) << std::endl;
+    std::cout << "-- Female 165/70 --\n"
+              << std::endl;
+    hr->setGender(Human::Genders::Id::FEMALE);
+    hr->setSize(165);
+    hr->setWeight(70);
+    std::cout << "\t* Weight\n"
+              << std::endl;
+    std::cout << "\t\t- Head\t: " << hr->getWeight(Human::Limbs::Id::HEAD) << std::endl;
+    std::cout << "\t\t- Trunc\t: " << hr->getWeight(Human::Limbs::Id::TRUNC) << std::endl;
+    std::cout << "\t* Size\n"
+              << std::endl;
+    std::cout << "\t\t- Head\t: " << hr->getSize(Human::Limbs::Id::HEAD) << std::endl;
+    std::cout << "\t\t- Trunc\t: " << hr->getSize(Human::Limbs::Id::TRUNC) << std::endl;
 }
 
 int main(int argc, char **argv)

@@ -6,6 +6,10 @@ typedef long double ld;
 #include "model/ellipsoid.h"
 #include <math.h>
 
+/**
+ * @brief Calculate ellipsoid volume and surface
+ * @url https://planetcalc.com/149/
+ */
 class Ellipsoid
 {
 
