@@ -20,6 +20,11 @@ void Human::Ratios::setGender(unsigned int gender)
     build();
 }
 
+unsigned int Human::Ratios::getGender()
+{
+    return m_gender;
+}
+
 void Human::Ratios::setSize(long double size)
 {
     m_size = size;
@@ -35,9 +40,19 @@ long double Human::Ratios::getWeight(unsigned int limbId)
     return getWeightRatio(limbId) / 100 * m_weight;
 }
 
+long double Human::Ratios::getWeight()
+{
+    return m_weight;
+}
+
 long double Human::Ratios::getSize(unsigned int limbId)
 {
     return getSizeRatio(limbId) / 100 * m_size;
+}
+
+long double Human::Ratios::getSize()
+{
+    return m_size;
 }
 
 void Human::Ratios::buildWeights()

@@ -21,39 +21,62 @@ public:
     Ratios(unsigned int gender, long double size, long double weight);
     ~Ratios();
     /**
-     * @brief Get the Weight object
+     * @brief Get the limb weight from limbId
      * 
      * @param limbId 
      * @return long double 
      */
     long double getWeight(unsigned int limbId);
     /**
-     * @brief Get the Size object
+     * @brief Get the main weight
+     * 
+     * @return long double 
+     */
+    long double getWeight();
+    /**
+     * @brief Get the limb size from limbId
      * 
      * @param limbId 
      * @return long double 
      */
     long double getSize(unsigned int limbId);
     /**
-     * @brief Set the Gender object
+     * @brief Get the main size
+     * 
+     * @return long double 
+     */
+    long double getSize();
+    /**
+     * @brief Get the gender
+     * 
+     * @return unsigned int 
+     */
+    unsigned int getGender();
+    /**
+     * @brief Set the gender
      * 
      * @param gender 
      */
     void setGender(unsigned int gender);
     /**
-     * @brief Set the Size object
+     * @brief Set the main size
      * 
      * @param size 
      */
     void setSize(long double size);
     /**
-     * @brief Set the Weight object
+     * @brief Set the main weight
      * 
      * @param weight 
      */
     void setWeight(long double weight);
 
 private:
+    unsigned int m_gender;
+    long double m_size;
+    long double m_weight;
+    std::map<unsigned int, long double> m_size_ratios;
+    std::map<unsigned int, long double> m_weight_ratios;
     void reset();
     void build();
     void buildWeights();
@@ -62,11 +85,6 @@ private:
     long double getWeightRatio(unsigned int limbId);
     void addSizeRatio(unsigned int limbId, long double ratio);
     long double getSizeRatio(unsigned int limbId);
-    unsigned int m_gender;
-    long double m_size;
-    long double m_weight;
-    std::map<unsigned int, long double> m_size_ratios;
-    std::map<unsigned int, long double> m_weight_ratios;
 };
 
 } // namespace Human
