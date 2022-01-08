@@ -2,19 +2,21 @@
 #ifndef H_ELLIPSOID
 #define H_ELLIPSOID
 
-#include <math.h>
 typedef long double ld;
+#include "model/ellipsoid.h"
+#include <math.h>
 
 class Ellipsoid
 {
 
 public:
-    Ellipsoid(ld a, ld b, ld c);
+    Ellipsoid(unsigned int id,ld a, ld b, ld c);
     ld volume();
     ld surface();
     ld ratiosv();
 
 private:
+    unsigned int m_id;
     ld m_p;
     ld m_pi;
     ld m_a;

@@ -1,5 +1,5 @@
 
-#include "human.h"
+#include "humanbody.h"
 
 Human::Body::Body()
 {

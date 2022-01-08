@@ -1,7 +1,7 @@
 
 #include "ellipsoid.h"
 
-Ellipsoid::Ellipsoid(ld a, ld b, ld c) : m_a(a), m_b(b), m_c(c)
+Ellipsoid::Ellipsoid(unsigned int id, ld a, ld b, ld c) : m_id(id), m_a(a), m_b(b), m_c(c)
 {
     m_p = 1.6075;
     m_pi = 4 * atan(1);
