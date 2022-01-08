@@ -2,9 +2,7 @@
 #ifndef H_HUMAN_RATIOS
 #define H_HUMAN_RATIOS
 
-#include <iostream>
 #include <map>
-
 #include "humanlimbs.h"
 #include "humangenders.h"
 
@@ -17,10 +15,37 @@ class Ratios
 public:
     Ratios(unsigned int gender, long double size, long double weight);
     ~Ratios();
+    /**
+     * @brief Get the Weight object
+     * 
+     * @param limbId 
+     * @return long double 
+     */
     long double getWeight(unsigned int limbId);
+    /**
+     * @brief Get the Size object
+     * 
+     * @param limbId 
+     * @return long double 
+     */
     long double getSize(unsigned int limbId);
+    /**
+     * @brief Set the Gender object
+     * 
+     * @param gender 
+     */
     void setGender(unsigned int gender);
+    /**
+     * @brief Set the Size object
+     * 
+     * @param size 
+     */
     void setSize(long double size);
+    /**
+     * @brief Set the Weight object
+     * 
+     * @param weight 
+     */
     void setWeight(long double weight);
 
 private:

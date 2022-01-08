@@ -6,6 +6,7 @@
 #include <sstream>
 #include "model/ellipsoid.h"
 
+#include "humanratios.h"
 #include "humanbody.h"
 
 void elltest()
@@ -39,6 +40,19 @@ void makeMePulse()
     delete me;
 }
 
+void checkHumanRatios()
+{
+    Human::Ratios *hr = new Human::Ratios(Human::Genders::Id::MALE, 185, 120);
+    std::cout << "Weight\n"
+              << std::endl;
+    std::cout << "\tHead : " << hr->getWeight(Human::Limbs::Id::HEAD) << std::endl;
+    std::cout << "\tTrunc : " << hr->getWeight(Human::Limbs::Id::TRUNC) << std::endl;
+    std::cout << "Size\n"
+              << std::endl;
+    std::cout << "\tHead : " << hr->getSize(Human::Limbs::Id::HEAD) << std::endl;
+    std::cout << "\tTrunc : " << hr->getSize(Human::Limbs::Id::TRUNC) << std::endl;
+}
+
 int main(int argc, char **argv)
 {
     (void)argc;
@@ -47,6 +61,7 @@ int main(int argc, char **argv)
     {
     }
     elltest();
+    checkHumanRatios();
     makeMePulse();
     return 0;
 }
