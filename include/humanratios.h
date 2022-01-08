@@ -17,8 +17,15 @@ class Ratios
 public:
     Ratios(unsigned int gender, long double size, long double weight);
     ~Ratios();
+    long double getWeight(unsigned int limbId);
+    long double getSize(unsigned int limbId);
+    void setGender(unsigned int gender);
+    void setSize(long double size);
+    void setWeight(long double weight);
 
 private:
+    void reset();
+    void build();
     void buildWeights();
     void buildSizes();
     void addWeightRatio(unsigned int limbId, long double ratio);
