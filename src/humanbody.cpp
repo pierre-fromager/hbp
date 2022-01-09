@@ -102,7 +102,7 @@ void Human::Body::propBackward(unsigned int id)
     std::cout << "backward" << std::endl;
     while (cur != nullptr)
     {
-        std::cout << "\t id : " << cur->getId() << std::endl;
+        propCallback(cur);
         cur = cur->getPrev();
     }
 }
@@ -113,7 +113,7 @@ void Human::Body::propForward(unsigned int id)
     std::cout << "forward" << std::endl;
     while (cur != nullptr)
     {
-        std::cout << "\t id : " << cur->getId() << std::endl;
+        propCallback(cur);
         cur = cur->getNext();
     }
 }

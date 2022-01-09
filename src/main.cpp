@@ -11,6 +11,8 @@
 #include "humanratios.h"
 #include "humanbody.h"
 
+#include "dlinkednode.h"
+
 #define TAB "\t"
 #define STAR "*"
 #define SPACE " "
@@ -42,6 +44,9 @@ void makeMePulse()
 {
     Human::Body *me = new Human::Body();
     std::cout << "-- I pulse --" << std::endl;
+    me->propCallback = [=](DLinkedNode *n) {
+        std::cout << "\t callback id : " << n->getId() << std::endl;
+    };
     me->pulse();
     delete me;
 }

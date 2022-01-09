@@ -5,6 +5,7 @@
 #include <iostream>
 #include <vector>
 #include <algorithm>
+#include <functional>
 #include "humanlimbs.h"
 #include "dlinkednode.h"
 
@@ -19,8 +20,9 @@ public:
     DLinkedNode *limb(unsigned int id);
     void pulse();
     std::vector<DLinkedNode *> backReferences(unsigned int id);
-    void propBackward(unsigned int id);
-    void propForward(unsigned int id);
+    void propBackward(unsigned int id/*,const std::function<void(DLinkedNode)> &propCallback*/);
+    void propForward(unsigned int id/*,const std::function<void(DLinkedNode)> &propCallback*/);
+    std::function<void(DLinkedNode*)> propCallback;
 
 private:
     void build();
