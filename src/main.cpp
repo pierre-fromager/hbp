@@ -1,5 +1,7 @@
 
 #include <iostream>
+#include <iomanip>
+
 #include "dlinkednode.h"
 #include "ellipsoid.h"
 
@@ -52,13 +54,14 @@ void reportHumanRatios(Human::Ratios *hr, bool rmode = true)
     const std::string ssize = std::to_string((int)hr->getSize());
     const std::string sweight = std::to_string((int)hr->getWeight());
     const std::string rtype = rmode ? "weights" : "sizes";
-    const std::string title = gender + SPACE + ssize + "/" + sweight + " " + rtype + ":";
+    const std::string title = gender + SPACE + ssize + "/" + sweight + " " + rtype;
     std::cout << STAR << " " << title << std::endl;
     for (const auto limbId : Human::Limbs::IdAll)
     {
         const long double value = rmode ? hr->getWeight(limbId) : hr->getSize(limbId);
         std::cout << TAB
-                  << Human::Limbs::Labels.at(limbId)
+                  << std::setw(15) << std::left << Human::Limbs::Labels.at(limbId)
+                  << std::setw (2) 
                   << " : " << value << std::endl;
     }
 }

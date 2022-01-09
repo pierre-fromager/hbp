@@ -33,7 +33,7 @@ static const Id IdAll[] = {
     LEG_L_UP, LEG_L_LO, LEG_L_FOOT,
     LEG_R_UP, LEG_R_LO, LEG_R_FOOT};
 
-static const std::map<int, std::string> Labels = {
+static const std::map<Id, std::string> Labels = {
     {TRUNC, "Trunc"},
     {HEAD, "Head"},
     {ARM_L_UP, "Left upper arm"},
