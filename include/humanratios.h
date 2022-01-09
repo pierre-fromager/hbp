@@ -22,6 +22,7 @@ public:
     ~Ratios();
     /**
      * @brief Get the limb weight from limbId
+     * @todo 14.5% missing to share out to existing limbs
      * 
      * @param limbId 
      * @return long double 

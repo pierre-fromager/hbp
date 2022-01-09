@@ -46,22 +46,22 @@ void makeMePulse()
     delete me;
 }
 
-void reportHumanRatios(Human::Ratios *hr, bool rmode = true)
-{    
+void reportHumanRatios(Human::Ratios *hr, bool weighted = true)
+{
     const std::string gender = (hr->getGender() == Human::Genders::Id::MALE)
                                    ? HUMAN_GENDER_LABEL_MALE
                                    : HUMAN_GENDER_LABEL_FEMALE;
     const std::string ssize = std::to_string((int)hr->getSize());
     const std::string sweight = std::to_string((int)hr->getWeight());
-    const std::string rtype = rmode ? "weights" : "sizes";
-    const std::string title = gender + SPACE + ssize + "/" + sweight + " " + rtype;
-    std::cout << STAR << " " << title << std::endl;
+    const std::string rtype = weighted ? "weights" : "sizes";
+    const std::string title = gender + SPACE + ssize + "/" + sweight + SPACE + rtype;
+    std::cout << STAR << SPACE << title << std::endl;
     for (const auto limbId : Human::Limbs::IdAll)
     {
-        const long double value = rmode ? hr->getWeight(limbId) : hr->getSize(limbId);
+        const long double value = weighted ? hr->getWeight(limbId) : hr->getSize(limbId);
         std::cout << TAB
                   << std::setw(15) << std::left << Human::Limbs::Labels.at(limbId)
-                  << std::setw (2) 
+                  << std::setw(2)
                   << " : " << value << std::endl;
     }
 }
