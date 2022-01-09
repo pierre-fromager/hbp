@@ -9,6 +9,10 @@
 #include "humanratios.h"
 #include "humanbody.h"
 
+#define TAB "\t"
+#define STAR "*"
+#define SPACE " "
+
 void elltest()
 {
     Model::Ellipsoid em;
@@ -41,20 +45,22 @@ void makeMePulse()
 }
 
 void reportHumanRatios(Human::Ratios *hr, bool rmode = true)
-{
+{    
     const std::string gender = (hr->getGender() == Human::Genders::Id::MALE)
-                                   ? "Male"
-                                   : "Female";
+                                   ? HUMAN_GENDER_LABEL_MALE
+                                   : HUMAN_GENDER_LABEL_FEMALE;
     const std::string ssize = std::to_string((int)hr->getSize());
     const std::string sweight = std::to_string((int)hr->getWeight());
-    const std::string title = gender + " " + ssize + "/" + sweight;
-    std::cout << "--" << title << "--" << std::endl;
-    const std::string rtype = rmode ? "\t* Weight" : "\t* Size";
-    std::cout << rtype << std::endl;
-    const long double head_value = rmode ? hr->getWeight(Human::Limbs::Id::HEAD) : hr->getSize(Human::Limbs::Id::HEAD);
-    std::cout << "\t\t- Head\t: " << std::to_string(head_value) << std::endl;
-    const long double trunc_value = rmode ? hr->getWeight(Human::Limbs::Id::TRUNC) : hr->getSize(Human::Limbs::Id::TRUNC);
-    std::cout << "\t\t- Trunc\t: " << std::to_string(trunc_value) << std::endl;
+    const std::string rtype = rmode ? "weights" : "sizes";
+    const std::string title = gender + SPACE + ssize + "/" + sweight + " " + rtype + ":";
+    std::cout << STAR << " " << title << std::endl;
+    for (const auto limbId : Human::Limbs::IdAll)
+    {
+        const long double value = rmode ? hr->getWeight(limbId) : hr->getSize(limbId);
+        std::cout << TAB
+                  << Human::Limbs::Labels.at(limbId)
+                  << " : " << value << std::endl;
+    }
 }
 
 void checkHumanRatios()
