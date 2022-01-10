@@ -29,3 +29,30 @@ make
 
 **hpb** executable will be generated in build folder.  
 **hbp_test** executable will be generated in build\test folder.
+
+## Testing
+
+Check boost build hbp_test options :
+```
+build/test/hbp_test --help
+```
+
+Verbose run :
+
+```
+build/test/hbp_test -l all
+```
+
+Running tests suites with a simple progressbar would be :
+
+```
+build/test/hbp_test -i true -p true
+```
+
+Essential report would be :
+
+```
+build/test/hbp_test --list_content
+```
+
+Report can be generated for various format (check --report_format option).
