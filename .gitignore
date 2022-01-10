@@ -7,3 +7,4 @@ callgrind.*
 *.csv
 *.dat
 log.txt
+build
