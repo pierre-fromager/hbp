@@ -76,6 +76,36 @@ BOOST_FIXTURE_TEST_CASE(MaleNormalWeight, MaleRatiosFixt)
         BOOST_TEST(hr->getWeight(limbId) == expected[cpt++], tt::tolerance(0.15L));
 }
 
+BOOST_FIXTURE_TEST_CASE(MaleNormalSize, MaleRatiosFixt)
+{
+    const std::vector<long double> expected = {
+        54, 24.84, 30.96, 28.26, 18.72, 30.96, 28.26,
+        18.72, 41.76, 44.46, 7.56, 41.76, 44.46, 7.56};
+    int cpt = 0;
+    for (const auto limbId : Human::Limbs::IdAll)
+        BOOST_TEST(hr->getSize(limbId) == expected[cpt++], tt::tolerance(0.15L));
+}
+
+BOOST_FIXTURE_TEST_CASE(FemaleNormalWeight, FemaleRatiosFixt)
+{
+    const std::vector<long double> expected = {
+        37.1, 5.74, 2.03, 1.12, 0.35, 2.03, 1.12,
+        0.35, 8.19, 3.71, 0.91, 8.19, 3.71, 0.91};
+    int cpt = 0;
+    for (const auto limbId : Human::Limbs::IdAll)
+        BOOST_TEST(hr->getWeight(limbId) == expected[cpt++], tt::tolerance(0.15L));
+}
+
+BOOST_FIXTURE_TEST_CASE(FemaleNormalSize, FemaleRatiosFixt)
+{
+    const std::vector<long double> expected = {
+        49.5, 21.45, 31.845, 27.39, 17.16, 31.845, 27.39,
+        17.16, 40.755, 42.24, 6.6, 40.755, 42.24, 6.6};
+    int cpt = 0;
+    for (const auto limbId : Human::Limbs::IdAll)
+        BOOST_TEST(hr->getSize(limbId) == expected[cpt++], tt::tolerance(0.15L));
+}
+
 BOOST_AUTO_TEST_CASE(TestHumanRatiosDummy)
 {
     BOOST_TEST(true);
