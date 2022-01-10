@@ -1,11 +1,13 @@
 #define BOOST_TEST_MODULE HbpTests
-
 #include <boost/test/unit_test.hpp>
 #include <iomanip>
+#include <vector>
 //#include "testbasefixture.h"
 #include "humanratios.h"
 
 BOOST_AUTO_TEST_SUITE(TestHumanRatios)
+
+namespace tt = boost::test_tools;
 
 struct TestBaseFixt
 {
@@ -39,38 +41,39 @@ struct TestRatiosFixt : TestBaseFixt
 struct MaleRatiosFixt : public TestRatiosFixt
 {
     MaleRatiosFixt() : TestRatiosFixt(
-                              Human::Genders::Id::MALE,
-                              180,
-                              80) {}
+                           Human::Genders::Id::MALE,
+                           180,
+                           80) {}
 };
 
 struct FemaleRatiosFixt : public TestRatiosFixt
 {
     FemaleRatiosFixt() : TestRatiosFixt(
-                                Human::Genders::Id::FEMALE,
-                                165,
-                                70) {}
+                             Human::Genders::Id::FEMALE,
+                             165,
+                             70) {}
 };
 
-BOOST_FIXTURE_TEST_CASE(MaleNormal, MaleRatiosFixt)
+BOOST_FIXTURE_TEST_CASE(MaleNormalGetter, MaleRatiosFixt)
 {
-    for (const auto limbId : Human::Limbs::IdAll)
-    {
-        const long double value = hr->getWeight(limbId);
-        std::cout << std::setw(15) << std::left
-                  << Human::Limbs::Labels.at(limbId)
-                  << std::setw(2)
-                  << " : " << value << std::endl;
-    }
-
     BOOST_CHECK_EQUAL(hr->getWeight(), 80);
     BOOST_CHECK_EQUAL(hr->getSize(), 180);
 }
 
-BOOST_FIXTURE_TEST_CASE(FemaleNormal, FemaleRatiosFixt)
+BOOST_FIXTURE_TEST_CASE(FemaleNormalGetter, FemaleRatiosFixt)
 {
     BOOST_CHECK_EQUAL(hr->getWeight(), 70);
     BOOST_CHECK_EQUAL(hr->getSize(), 165);
+}
+
+BOOST_FIXTURE_TEST_CASE(MaleNormalWeight, MaleRatiosFixt)
+{
+    const std::vector<long double> expected = {
+        44, 6.56, 2.56, 1.52, 0.48, 2.56, 1.52,
+        0.48, 8.4, 3.76, 1.12, 8.4, 3.76, 1.12};
+    int cpt = 0;
+    for (const auto limbId : Human::Limbs::IdAll)
+        BOOST_TEST(hr->getWeight(limbId) == expected[cpt++], tt::tolerance(0.15L));
 }
 
 BOOST_AUTO_TEST_CASE(TestHumanRatiosDummy)
