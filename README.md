@@ -20,17 +20,20 @@ make
 ### CMake
 
 ```
-mkdir -p build
-cd build
-cmake configure ..
-cmake generate ..
-make
+./build.sh
 ```
 
 **hpb** executable will be generated in build folder.  
 **hbp_test** executable will be generated in build\test folder.
 
 ## Testing
+
+Tests are enable only if you build with cmake.  
+
+Just run
+```
+./test.sh
+```
 
 In order to make app testable we build a lib.  
 All testable entries will be tested from lib.  
