@@ -1,6 +1,21 @@
 cmake_minimum_required (VERSION 2.8)
 project (Hbp)
 
+add_definitions(
+    -O2 -Werror -Wall -Wextra -Wpedantic -std=c++17
+	-Wno-unused-function -Wno-unused-parameter -Wno-unused-variable 
+	-Wno-format-nonliteral -Wcast-qual -Wconversion 
+	-Wformat=2 -Wformat-security 
+	-Wnull-dereference -Wstack-protector -Wtrampolines -Wvla 
+	-Warray-bounds=2 
+	-Wshift-overflow=2 
+	-Wlogical-op -Wduplicated-cond 
+	-Wformat-signedness -Wshadow -Wstrict-overflow=4 
+	-Wundef -Wswitch-enum 
+	-Wstack-usage=10000 
+	-D_FORTIFY_SOURCE=2
+    )
+
 file (GLOB_RECURSE Hbp_SOURCES CONFIGURE_DEPENDS "src/*.cpp")
 file (GLOB_RECURSE Hbp_HEADERS CONFIGURE_DEPENDS "include/*.h")
 
