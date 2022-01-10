@@ -1,3 +1,4 @@
+
 #define BOOST_TEST_MODULE HbpTests
 #include <boost/test/unit_test.hpp>
 #include <iomanip>
@@ -104,11 +105,6 @@ BOOST_FIXTURE_TEST_CASE(FemaleNormalSize, FemaleRatiosFixt)
     int cpt = 0;
     for (const auto limbId : Human::Limbs::IdAll)
         BOOST_TEST(hr->getSize(limbId) == expected[cpt++], tt::tolerance(0.15L));
-}
-
-BOOST_AUTO_TEST_CASE(TestHumanRatiosDummy)
-{
-    BOOST_TEST(true);
 }
 
 BOOST_AUTO_TEST_SUITE_END() // TestHumanRatios

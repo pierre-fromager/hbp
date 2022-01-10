@@ -32,6 +32,9 @@ make
 
 ## Testing
 
+In order to make app testable we build a lib.  
+All testable entries will be tested from lib.  
+
 Check boost build hbp_test options :
 ```
 build/test/hbp_test --help
