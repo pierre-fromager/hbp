@@ -14,5 +14,9 @@ list (REMOVE_DUPLICATES Hbp_INCLUDE_DIRS)
 add_executable(hbp ${Hbp_SOURCES})
 target_include_directories(hbp PRIVATE ${Hbp_INCLUDE_DIRS})
 
+include_directories(${Hbp_INCLUDE_DIRS})
+add_library (hbp_lib ${Hbp_SOURCES} ${Hbp_INCLUDE_DIRS})
+target_link_libraries(hbp hbp_lib)
+
 enable_testing ()
 add_subdirectory (test)
