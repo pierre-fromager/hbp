@@ -1,21 +1,19 @@
 
-#define BOOST_TEST_MODULE HbpTests
 #include <boost/test/unit_test.hpp>
 #include <vector>
-#include "humanratios.h"
-#include "test/fixtures/humanratios.h"
+#include "test/fixtures/f_humanratios.h"
 
-BOOST_AUTO_TEST_SUITE(TestHumanRatios)
+BOOST_AUTO_TEST_SUITE(TestSuiteHumanRatios)
 
 namespace tt = boost::test_tools;
 
-BOOST_FIXTURE_TEST_CASE(MaleNormalGetter, MaleRatiosFixt)
+BOOST_FIXTURE_TEST_CASE(MaleGetter, MaleRatiosFixt)
 {
     BOOST_CHECK_EQUAL(hr->getWeight(), 80);
     BOOST_CHECK_EQUAL(hr->getSize(), 180);
 }
 
-BOOST_FIXTURE_TEST_CASE(FemaleNormalGetter, FemaleRatiosFixt)
+BOOST_FIXTURE_TEST_CASE(FemaleGetter, FemaleRatiosFixt)
 {
     BOOST_CHECK_EQUAL(hr->getWeight(), 70);
     BOOST_CHECK_EQUAL(hr->getSize(), 165);
@@ -28,7 +26,9 @@ BOOST_FIXTURE_TEST_CASE(MaleWeight, MaleRatiosFixt)
         0.48, 8.4, 3.76, 1.12, 8.4, 3.76, 1.12};
     int cpt = 0;
     for (const auto limbId : Human::Limbs::IdAll)
-        BOOST_TEST(hr->getWeight(limbId) == expected[cpt++], tt::tolerance(0.15L));
+        BOOST_TEST(
+            hr->getWeight(limbId) == expected[cpt++],
+            tt::tolerance(0.15L));
 }
 
 BOOST_FIXTURE_TEST_CASE(MaleSize, MaleRatiosFixt)
@@ -38,7 +38,9 @@ BOOST_FIXTURE_TEST_CASE(MaleSize, MaleRatiosFixt)
         18.72, 41.76, 44.46, 7.56, 41.76, 44.46, 7.56};
     int cpt = 0;
     for (const auto limbId : Human::Limbs::IdAll)
-        BOOST_TEST(hr->getSize(limbId) == expected[cpt++], tt::tolerance(0.15L));
+        BOOST_TEST(
+            hr->getSize(limbId) == expected[cpt++],
+            tt::tolerance(0.15L));
 }
 
 BOOST_FIXTURE_TEST_CASE(FemaleWeight, FemaleRatiosFixt)
@@ -48,7 +50,9 @@ BOOST_FIXTURE_TEST_CASE(FemaleWeight, FemaleRatiosFixt)
         0.35, 8.19, 3.71, 0.91, 8.19, 3.71, 0.91};
     int cpt = 0;
     for (const auto limbId : Human::Limbs::IdAll)
-        BOOST_TEST(hr->getWeight(limbId) == expected[cpt++], tt::tolerance(0.15L));
+        BOOST_TEST(
+            hr->getWeight(limbId) == expected[cpt++],
+            tt::tolerance(0.15L));
 }
 
 BOOST_FIXTURE_TEST_CASE(FemaleSize, FemaleRatiosFixt)
@@ -58,7 +62,9 @@ BOOST_FIXTURE_TEST_CASE(FemaleSize, FemaleRatiosFixt)
         17.16, 40.755, 42.24, 6.6, 40.755, 42.24, 6.6};
     int cpt = 0;
     for (const auto limbId : Human::Limbs::IdAll)
-        BOOST_TEST(hr->getSize(limbId) == expected[cpt++], tt::tolerance(0.15L));
+        BOOST_TEST(
+            hr->getSize(limbId) == expected[cpt++],
+            tt::tolerance(0.15L));
 }
 
-BOOST_AUTO_TEST_SUITE_END() // TestHumanRatios
+BOOST_AUTO_TEST_SUITE_END() // TestSuiteHumanRatios

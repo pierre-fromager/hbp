@@ -7,6 +7,11 @@ Ellipsoid::Ellipsoid(unsigned int id, ld a, ld b, ld c) : m_id(id), m_a(a), m_b(
     m_pi = 4 * atan(1);
 }
 
+unsigned int Ellipsoid::getId()
+{
+    return m_id;
+}
+
 ld Ellipsoid::volume()
 {
     return (4 * m_pi * m_a * m_b * m_c) / 3;
@@ -23,5 +28,8 @@ ld Ellipsoid::surface()
 
 ld Ellipsoid::ratiosv()
 {
-    return surface() / volume();
+    const ld v = volume();
+    if (v == 0)
+        return 0;
+    return surface() / v;
 }

@@ -1,12 +1,9 @@
 
-#ifndef TEST_BASE_FIXTURE_H
-#define TEST_BASE_FIXTURE_H
+#ifndef TEST_HUMANRATIOS_FIXTURE_H
+#define TEST_HUMANRATIOS_FIXTURE_H
 
-struct TestBaseFixt
-{
-    const std::string m_setup = "setup";
-    const std::string m_teardown = "teardown";
-};
+#include "humanratios.h"
+#include "f_common.h"
 
 struct TestRatiosFixt : TestBaseFixt
 {

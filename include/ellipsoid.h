@@ -15,6 +15,7 @@ class Ellipsoid
 
 public:
     Ellipsoid(unsigned int id,ld a, ld b, ld c);
+    unsigned int getId();
     ld volume();
     ld surface();
     ld ratiosv();
