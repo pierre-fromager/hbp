@@ -1,59 +1,13 @@
 
 #define BOOST_TEST_MODULE HbpTests
 #include <boost/test/unit_test.hpp>
-#include <iomanip>
 #include <vector>
-//#include "testbasefixture.h"
 #include "humanratios.h"
+#include "test/fixtures/humanratios.h"
 
 BOOST_AUTO_TEST_SUITE(TestHumanRatios)
 
 namespace tt = boost::test_tools;
-
-struct TestBaseFixt
-{
-    const std::string m_setup = "setup";
-    const std::string m_teardown = "teardown";
-};
-
-struct TestRatiosFixt : TestBaseFixt
-{
-    TestRatiosFixt(
-        unsigned int gender,
-        long double size,
-        long double weight) : m_gender(gender),
-                              m_size(size),
-                              m_weight(weight)
-    {
-        BOOST_TEST_MESSAGE(m_setup);
-        hr = new Human::Ratios(m_gender, m_size, m_weight);
-    }
-    ~TestRatiosFixt()
-    {
-        BOOST_TEST_MESSAGE(m_teardown);
-        delete hr;
-    }
-    Human::Ratios *hr;
-    unsigned int m_gender;
-    long double m_size;
-    long double m_weight;
-};
-
-struct MaleRatiosFixt : public TestRatiosFixt
-{
-    MaleRatiosFixt() : TestRatiosFixt(
-                           Human::Genders::Id::MALE,
-                           180,
-                           80) {}
-};
-
-struct FemaleRatiosFixt : public TestRatiosFixt
-{
-    FemaleRatiosFixt() : TestRatiosFixt(
-                             Human::Genders::Id::FEMALE,
-                             165,
-                             70) {}
-};
 
 BOOST_FIXTURE_TEST_CASE(MaleNormalGetter, MaleRatiosFixt)
 {
@@ -67,7 +21,7 @@ BOOST_FIXTURE_TEST_CASE(FemaleNormalGetter, FemaleRatiosFixt)
     BOOST_CHECK_EQUAL(hr->getSize(), 165);
 }
 
-BOOST_FIXTURE_TEST_CASE(MaleNormalWeight, MaleRatiosFixt)
+BOOST_FIXTURE_TEST_CASE(MaleWeight, MaleRatiosFixt)
 {
     const std::vector<long double> expected = {
         44, 6.56, 2.56, 1.52, 0.48, 2.56, 1.52,
@@ -77,7 +31,7 @@ BOOST_FIXTURE_TEST_CASE(MaleNormalWeight, MaleRatiosFixt)
         BOOST_TEST(hr->getWeight(limbId) == expected[cpt++], tt::tolerance(0.15L));
 }
 
-BOOST_FIXTURE_TEST_CASE(MaleNormalSize, MaleRatiosFixt)
+BOOST_FIXTURE_TEST_CASE(MaleSize, MaleRatiosFixt)
 {
     const std::vector<long double> expected = {
         54, 24.84, 30.96, 28.26, 18.72, 30.96, 28.26,
@@ -87,7 +41,7 @@ BOOST_FIXTURE_TEST_CASE(MaleNormalSize, MaleRatiosFixt)
         BOOST_TEST(hr->getSize(limbId) == expected[cpt++], tt::tolerance(0.15L));
 }
 
-BOOST_FIXTURE_TEST_CASE(FemaleNormalWeight, FemaleRatiosFixt)
+BOOST_FIXTURE_TEST_CASE(FemaleWeight, FemaleRatiosFixt)
 {
     const std::vector<long double> expected = {
         37.1, 5.74, 2.03, 1.12, 0.35, 2.03, 1.12,
@@ -97,7 +51,7 @@ BOOST_FIXTURE_TEST_CASE(FemaleNormalWeight, FemaleRatiosFixt)
         BOOST_TEST(hr->getWeight(limbId) == expected[cpt++], tt::tolerance(0.15L));
 }
 
-BOOST_FIXTURE_TEST_CASE(FemaleNormalSize, FemaleRatiosFixt)
+BOOST_FIXTURE_TEST_CASE(FemaleSize, FemaleRatiosFixt)
 {
     const std::vector<long double> expected = {
         49.5, 21.45, 31.845, 27.39, 17.16, 31.845, 27.39,
