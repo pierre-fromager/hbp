@@ -1,6 +1,5 @@
 
 #include <boost/test/unit_test.hpp>
-#include <vector>
 #include "test/fixtures/f_ellipsoid.h"
 
 BOOST_AUTO_TEST_SUITE(TestSuiteEllipsoid)
@@ -9,10 +8,11 @@ namespace tt = boost::test_tools;
 
 BOOST_FIXTURE_TEST_CASE(GetZeroes, EllipsoidZeroesFixt)
 {
-    BOOST_CHECK_EQUAL(ell->getId(), 0);
-    BOOST_CHECK_EQUAL(ell->volume(), 0);
-    BOOST_CHECK_EQUAL(ell->surface(), 0);
-    BOOST_CHECK_EQUAL(ell->ratiosv(), 0);
+    const ld expectedZero = 0;
+    BOOST_CHECK_EQUAL(ell->getId(), expectedZero);
+    BOOST_CHECK_EQUAL(ell->volume(), expectedZero);
+    BOOST_CHECK_EQUAL(ell->surface(), expectedZero);
+    BOOST_CHECK_EQUAL(ell->ratiosv(), expectedZero);
 }
 
 BOOST_FIXTURE_TEST_CASE(GetOnes, EllipsoidIdOnesFixt)

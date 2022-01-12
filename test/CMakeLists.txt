@@ -7,7 +7,8 @@ add_definitions (-DBOOST_TEST_DYN_LINK)
 add_executable (
     hbp_test main.cpp 
     suites/humanratios.cpp 
-    suites/ellispoid.cpp)
+    suites/ellispoid.cpp
+    suites/model/ellispoid.cpp)
 
 target_link_libraries (hbp_test 
                         hbp_lib

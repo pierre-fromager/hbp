@@ -4,7 +4,7 @@
 
 #include <string>
 #include <iostream>
-
+typedef long double ld;
 namespace Model
 {
 

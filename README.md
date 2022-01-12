@@ -1,6 +1,13 @@
 # Human Body Propagation
 Hbp is a c++ app to build human body limbs to modelize interactions.
 
+## Description
+
+Each limb is connected to trunc(as a limb) through a double linked node collection.  
+It features to propagate backward and forward (up2u).  
+As you may know, double linked node let you connect a prev and a next node, but what happen if you have to connect multiple nodes to a target node ?  
+In order to do that you can set a prev on a node attaching this way multiple limbs to a single limb(arms,legs,head->trunc), then use the member backReference to get all neighbour nodes.
+
 ## Requirements
 
 No external dependencies required to build app from the makefile.  
