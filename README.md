@@ -69,3 +69,10 @@ build/test/hbp_test --list_content
 ```
 
 Report can be generated for various format (check --report_format option).
+
+## Todo
+
+* Integrate surface/volume calc from ellipsoid for limb modelization.
+* Externalize and specialize human body callbacks on propagation backward and forward.
+* Use assets loader from human body (csv) to assimilate limb's datas as ellipsoid object.
+* Introduce thermodynamic calc from datas (surface/volume) on body pulse.
