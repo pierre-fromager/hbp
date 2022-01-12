@@ -16,7 +16,7 @@ Testing app with Boost would require Boost framework.
 
 ## Build
 
-### Native
+### Makefile
 
 ```
 make
@@ -35,40 +35,64 @@ make
 
 ## Testing
 
-Tests are enable only if you build with cmake.  
+Tests are only enable if you build with cmake.  
 
 Just run
 ```
 ./test.sh
 ```
 
-In order to make app testable we build a lib.  
-All testable entries will be tested from lib.  
+In order to test app we build a static lib first (hbp_lib => libhbp_lib.a).  
+Then we run tests suites against this.  
 
 Check boost build hbp_test options :
 ```
 build/test/hbp_test --help
 ```
-
-Verbose run :
-
+Verbose run command
 ```
 build/test/hbp_test -l all
 ```
-
-Running tests suites with a simple progressbar would be :
-
+Running tests suites with a simple progressbar command would be
 ```
 build/test/hbp_test -i true -p true
 ```
+Sample output
+```
+Running 12 test cases...
+Platform: linux
+Compiler: GNU C++ version 6.3.0 20170516
+STL     : GNU libstdc++ version 20170516
+Boost   : 1.78.0
 
-Essential report would be :
-
+0%   10   20   30   40   50   60   70   80   90   100%
+|----|----|----|----|----|----|----|----|----|----|
+***************************************************
+```
+Essential report command would be
 ```
 build/test/hbp_test --list_content
 ```
+Sample output
+```
+TestSuiteHumanRatios*
+    MaleGetter*
+    FemaleGetter*
+    MaleWeight*
+    MaleSize*
+    FemaleWeight*
+    FemaleSize*
+TestSuiteEllipsoid*
+    GetZeroes*
+    GetOnes*
+    GetTwos*
+TestSuiteModelEllipsoid*
+    InCsvZeroes*
+    InCsvOnes*
+    InCsvRamp*
+```
 
-Report can be generated for various format (check --report_format option).
+Reports can be generated for various format (check --report_format option) to make CI easy.
 
 ## Todo
 
