@@ -22,6 +22,8 @@
 #define GENDER_OPTION DASH "g"
 #define WEIGT_OPTION DASH "w"
 #define SIZE_OPTION DASH "s"
+#define ARGS_SYNTAX "Syntax: "
+#define ARGS_USAGE " -g <gender (0 = Male, 1 = Female)> -s <size cm> -w <weight kg>"
 
 typedef struct m_options_s
 {
@@ -36,7 +38,10 @@ void pulse(Human::Ratios *hr)
     Ellipsoid *ell = new Ellipsoid();
     ld sumvol = 0;
     ld sumsur = 0;
-    me->propCallback = [hr, ell, &sumvol, &sumsur](DLinkedNode *n) mutable {
+    me->propCallback = [hr,
+                        ell,
+                        &sumvol,
+                        &sumsur](DLinkedNode *n) mutable {
         const unsigned int id = n->getId();
         const ld size = hr->getSize(id);
         ell->setId(id);
@@ -94,7 +99,7 @@ void reportHumanRatios(Human::Ratios *hr, bool weighted = true)
 
 void show_usage(char **argv)
 {
-    std::cout << "Syntax: " << argv[0] << " -g <gender> -s <size> -w <weight>" << std::endl;
+    std::cout << ARGS_SYNTAX << argv[0] << ARGS_USAGE << std::endl;
 }
 
 int main(int argc, char **argv)
