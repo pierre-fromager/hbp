@@ -14,6 +14,12 @@ No external dependencies required to build app from the makefile.
 Using CMake would require CMake.  
 Testing app with Boost would require Boost framework.  
 
+## Main sample
+
+We figure out to sum both limbs surfaces and volumes for given parsed options input.  
+You could think about howto modelize a specific limb root to operate so.  
+Volumes and surfaces ratios are approximated, use your own datas to match your features.
+
 ## Build
 
 ### Makefile
