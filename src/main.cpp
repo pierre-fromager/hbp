@@ -1,7 +1,7 @@
 
 #include <iostream>
 #include <iomanip>
-
+#include <stdexcept>
 #include "dlinkednode.h"
 #include "ellipsoid.h"
 #include "humanratios.h"
@@ -17,6 +17,17 @@
 #define KG "kg"
 #define WEIGHTS "weights"
 #define SIZES "sizes"
+#define DASH "-"
+#define HELP_OPTION DASH "h"
+#define GENDER_OPTION DASH "g"
+#define WEIGT_OPTION DASH "w"
+#define SIZE_OPTION DASH "s"
+
+typedef struct m_options_s
+{
+    unsigned int gender;
+    long double size, weight;
+} m_options_t;
 
 void pulse(Human::Ratios *hr)
 {
@@ -38,7 +49,7 @@ void pulse(Human::Ratios *hr)
                   << Human::Limbs::Labels.at((Human::Limbs::Id)id)
                   << std::setw(7) << std::left
                   << v << SPACE << CM3
-                  << std::left << std::setw(4)
+                  << std::left << std::setw(3)
                   << SPACE << s << SPACE << CM2 << std::endl;
         sumvol += v;
         sumsur += s;
@@ -49,7 +60,7 @@ void pulse(Human::Ratios *hr)
     std::cout << std::setw(18) << std::left << "SUM"
               << std::setw(7) << std::left
               << sumvol << SPACE << CM3
-              << std::left << std::setw(4)
+              << std::left << std::setw(3)
               << SPACE << sumsur << SPACE << CM2
               << std::endl;
     std::cout << std::setw(18) << std::left << "S/V"
@@ -81,14 +92,51 @@ void reportHumanRatios(Human::Ratios *hr, bool weighted = true)
     }
 }
 
+void show_usage(char **argv)
+{
+    std::cout << "Syntax: " << argv[0] << " -g <gender> -s <size> -w <weight>" << std::endl;
+}
+
 int main(int argc, char **argv)
 {
-    (void)argc;
-    char *prog = argv[0];
-    if (prog)
+    std::vector<std::string> args(argv + 1, argv + argc);
+    m_options_t opts = {0, 0, 0};
+    short optcnt = 0;
+    for (auto i = args.begin(); i != args.end(); ++i)
     {
+        if (*i == HELP_OPTION)
+        {
+            show_usage(argv);
+            return EXIT_SUCCESS;
+        }
+        else if (*i == GENDER_OPTION)
+        {
+            *i++;
+            optcnt++;
+            opts.gender = (unsigned int)stoul(*i, 0, 10);
+        }
+        else if (*i == SIZE_OPTION)
+        {
+            *i++;
+            optcnt++;
+            opts.size = stod(*i);
+        }
+        else if (*i == WEIGT_OPTION)
+        {
+            *i++;
+            optcnt++;
+            opts.weight = stod(*i);
+        }
     }
-    Human::Ratios *hr = new Human::Ratios(Human::Genders::Id::FEMALE, 170, 60);
+    if (optcnt < 3)
+    {
+        show_usage(argv);
+        return EXIT_FAILURE;
+    }
+    Human::Ratios *hr = new Human::Ratios(
+        opts.gender,
+        opts.size,
+        opts.weight);
     reportHumanRatios(hr);
     reportHumanRatios(hr, false);
     pulse(hr);
