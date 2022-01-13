@@ -99,7 +99,7 @@ std::vector<DLinkedNode *> Human::Body::backReferences(unsigned int id)
 void Human::Body::propBackward(unsigned int id)
 {
     DLinkedNode *cur = limb(id);
-    std::cout << "backward" << std::endl;
+    //std::cout << "backward" << std::endl;
     while (cur != nullptr)
     {
         propCallback(cur);
@@ -110,7 +110,7 @@ void Human::Body::propBackward(unsigned int id)
 void Human::Body::propForward(unsigned int id)
 {
     DLinkedNode *cur = limb(id);
-    std::cout << "forward" << std::endl;
+    //std::cout << "forward" << std::endl;
     while (cur != nullptr)
     {
         propCallback(cur);
