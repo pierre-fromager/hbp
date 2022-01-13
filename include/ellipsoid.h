@@ -14,14 +14,16 @@ class Ellipsoid
 {
 
 public:
-    Ellipsoid(unsigned int id,ld a, ld b, ld c);
+    Ellipsoid();
+    Ellipsoid(unsigned int id, ld a, ld b, ld c);
     unsigned int getId();
     ld getA();
     ld getB();
     ld getC();
+    void setId(unsigned int id);
     void setA(ld a);
     void setB(ld b);
-    void setC(ld c);    
+    void setC(ld c);
     ld volume();
     ld surface();
     ld ratiosv();

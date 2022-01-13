@@ -47,13 +47,18 @@ BOOST_FIXTURE_TEST_CASE(GetSetABC, EllipsoidZeroesFixt)
     const ld expected_a = 1;
     const ld expected_b = 2;
     const ld expected_c = 3;
+    const ld expected_v = 25.13;
+    const ld expected_s = 48.97;
+    const ld expected_r = 1.94;
     ell->setA(expected_a);
     ell->setB(expected_b);
     ell->setC(expected_c);
-
     BOOST_CHECK_EQUAL(ell->getA(), expected_a);
     BOOST_CHECK_EQUAL(ell->getB(), expected_b);
     BOOST_CHECK_EQUAL(ell->getC(), expected_c);
+    BOOST_TEST(ell->volume() == expected_v, tt::tolerance(0.15L));
+    BOOST_TEST(ell->surface() == expected_s, tt::tolerance(0.15L));
+    BOOST_TEST(ell->ratiosv() == expected_r, tt::tolerance(0.15L));
 }
 
 BOOST_AUTO_TEST_SUITE_END() // TestSuiteEllipsoid

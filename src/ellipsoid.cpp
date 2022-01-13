@@ -1,6 +1,12 @@
 
 #include "ellipsoid.h"
 
+Ellipsoid::Ellipsoid() : m_id(0), m_a(0), m_b(0), m_c(0)
+{
+    m_p = 1.6075;
+    m_pi = 4 * atan(1);
+}
+
 Ellipsoid::Ellipsoid(unsigned int id, ld a, ld b, ld c) : m_id(id), m_a(a), m_b(b), m_c(c)
 {
     m_p = 1.6075;
@@ -10,6 +16,11 @@ Ellipsoid::Ellipsoid(unsigned int id, ld a, ld b, ld c) : m_id(id), m_a(a), m_b(
 unsigned int Ellipsoid::getId()
 {
     return m_id;
+}
+
+void Ellipsoid::setId(unsigned int id)
+{
+    m_id = id;
 }
 
 ld Ellipsoid::getA()

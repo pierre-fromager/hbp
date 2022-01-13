@@ -16,20 +16,34 @@ void makeMePulse()
 {
     Human::Body *me = new Human::Body();
     std::cout << "-- I pulse --" << std::endl;
-    std::string s = "coincoin";
-    unsigned int c = 0;
+    std::string stest = "emptymepls";
+    unsigned int counter = 0;
     Human::Ratios *hr = new Human::Ratios(Human::Genders::Id::MALE, 180, 80);
-    Ellipsoid *ell = new Ellipsoid(0, 0, 0, 0);
-    me->propCallback = [&c, &s](DLinkedNode *n) mutable {
-        std::cout << "\t callback id : " << n->getId() << s << std::endl;
-        c++;
-        s = "";
+    Ellipsoid *ell = new Ellipsoid();
+    me->propCallback = [hr, &ell, &counter, &stest](DLinkedNode *n) mutable {
+        const unsigned int id = n->getId();
+        const ld hbdensvol = 1.01 * hr->getWeight(id);
+        const ld size = hr->getSize(id);
+        ell->setId(id);
+        ell->setA(size);
+        ell->setB(size / 2);
+        ell->setC(size * 0.2);
+        std::cout << "\t id : " << id << " label : "
+                  << Human::Limbs::Labels.at((Human::Limbs::Id)id)
+                  << " savol : " << hbdensvol
+                  /*<< " ell A : " << ell->getA()
+                  << " ell B : " << ell->getB()
+                  << " ell C : " << ell->getC()*/
+                  << " ell vol : " << ell->volume()
+                  //<< " ell sur : " << ell->surface()
+                  << std::endl;
+        counter++;
+        stest = "";
     };
-
     me->pulse();
     delete ell;
     delete hr;
-    std::cout << "\t cb counter : " << c << " s : " << s << std::endl;
+    std::cout << "\t cb counter : " << counter << " stest : " << stest << std::endl;
     delete me;
 }
 
