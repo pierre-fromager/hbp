@@ -12,6 +12,34 @@ unsigned int Ellipsoid::getId()
     return m_id;
 }
 
+ld Ellipsoid::getA()
+{
+    return m_a;
+}
+
+ld Ellipsoid::getB()
+{
+    return m_b;
+}
+
+ld Ellipsoid::getC()
+{
+    return m_c;
+}
+
+void Ellipsoid::setA(ld a)
+{
+    m_a = a;
+}
+void Ellipsoid::setB(ld b)
+{
+    m_b = b;
+}
+void Ellipsoid::setC(ld c)
+{
+    m_c = c;
+}
+
 ld Ellipsoid::volume()
 {
     return (4 * m_pi * m_a * m_b * m_c) / 3;

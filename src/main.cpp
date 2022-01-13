@@ -16,10 +16,20 @@ void makeMePulse()
 {
     Human::Body *me = new Human::Body();
     std::cout << "-- I pulse --" << std::endl;
-    me->propCallback = [=](DLinkedNode *n) {
-        std::cout << "\t callback id : " << n->getId() << std::endl;
+    std::string s = "coincoin";
+    unsigned int c = 0;
+    Human::Ratios *hr = new Human::Ratios(Human::Genders::Id::MALE, 180, 80);
+    Ellipsoid *ell = new Ellipsoid(0, 0, 0, 0);
+    me->propCallback = [&c, &s](DLinkedNode *n) mutable {
+        std::cout << "\t callback id : " << n->getId() << s << std::endl;
+        c++;
+        s = "";
     };
+
     me->pulse();
+    delete ell;
+    delete hr;
+    std::cout << "\t cb counter : " << c << " s : " << s << std::endl;
     delete me;
 }
 

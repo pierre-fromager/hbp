@@ -37,4 +37,23 @@ BOOST_FIXTURE_TEST_CASE(GetTwos, EllipsoidIdTwosFixt)
     BOOST_CHECK_EQUAL(ell->ratiosv(), expectedRatio);
 }
 
+BOOST_FIXTURE_TEST_CASE(GetSetABC, EllipsoidZeroesFixt)
+{
+    const ld expectedZero = 0;
+    BOOST_CHECK_EQUAL(ell->getId(), expectedZero);
+    BOOST_CHECK_EQUAL(ell->volume(), expectedZero);
+    BOOST_CHECK_EQUAL(ell->surface(), expectedZero);
+    BOOST_CHECK_EQUAL(ell->ratiosv(), expectedZero);
+    const ld expected_a = 1;
+    const ld expected_b = 2;
+    const ld expected_c = 3;
+    ell->setA(expected_a);
+    ell->setB(expected_b);
+    ell->setC(expected_c);
+
+    BOOST_CHECK_EQUAL(ell->getA(), expected_a);
+    BOOST_CHECK_EQUAL(ell->getB(), expected_b);
+    BOOST_CHECK_EQUAL(ell->getC(), expected_c);
+}
+
 BOOST_AUTO_TEST_SUITE_END() // TestSuiteEllipsoid
